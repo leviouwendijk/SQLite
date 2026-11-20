@@ -32,13 +32,9 @@ public enum SQLiteValue: Sendable, Equatable {
     }
 }
 
-public struct SQLiteError: Error, Sendable, Equatable, LocalizedError {
+public struct SQLiteError: Error, Sendable, Equatable {
     public let code: Int32
     public let message: String
-
-    public var errorDescription: String? {
-        "SQLite error \(code): \(message)"
-    }
 }
 
 /// A thin, single-connection wrapper over the system SQLite. Not thread-safe on

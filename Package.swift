@@ -18,12 +18,16 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(url: "https://github.com/leviouwendijk/Errors.git", branch: "master"),
         .package(url: "https://github.com/leviouwendijk/Testing.git", branch: "master"),
     ],
     targets: [
         // a thin wrapper over the system libsqlite3
         .target(
             name: "SQLite",
+            dependencies: [
+                .product(name: "Errors", package: "Errors"),
+            ],
             linkerSettings: [
                 .linkedLibrary("sqlite3"),
             ]
@@ -33,6 +37,7 @@ let package = Package(
             name: "SQLiteTests",
             dependencies: [
                 "SQLite",
+                .product(name: "Errors", package: "Errors"),
                 .product(name: "Testing", package: "Testing"),
             ],
             path: "Testing/SQLiteTests"

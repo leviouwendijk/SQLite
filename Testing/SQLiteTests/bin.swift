@@ -1,3 +1,4 @@
+import Errors
 import Foundation
 import SQLite
 import Testing
@@ -90,6 +91,19 @@ enum SQLiteTests {
             throw TestFlowAssertionFailure(label: "error", message: "expected a failure")
         } catch let error as SQLiteError {
             try Expect.true(error.message.contains("missing"), "Names the table")
+            let report = error.report
+            try Expect.equal(report.diagnostic.identity?.raw, "sqlite.statement_failed", "A failed statement has a stable code")
+            try Expect.equal(report.presentation.reasonSensitivity, .potentially_sensitive, "SQLite's own text is marked, since it can quote values")
+        }
+
+        try database.execute("CREATE TABLE unique_names (name TEXT UNIQUE)")
+        try database.execute("INSERT INTO unique_names VALUES ('a')")
+        do {
+            try database.execute("INSERT INTO unique_names VALUES ('a')")
+            throw TestFlowAssertionFailure(label: "constraint", message: "expected a failure")
+        } catch let error as SQLiteError {
+            try Expect.equal(error.errorIdentity.raw, "sqlite.constraint_failed", "A constraint failure is named by its primary code")
+            try Expect.equal(error.errorDisposition, .invalid_input, "A constraint failure means the input must change")
         }
     }
 }

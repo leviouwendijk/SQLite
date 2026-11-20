@@ -1,5 +1,5 @@
 {
-  "originHash" : "da4ef6aa43bea75e2a39613cfbe5eb7f8319fde69d7d12792b8fc8fc0675fd7f",
+  "originHash" : "6c7f42231ab0092b1a1cc7d4a7c96e2274a4c861fb6b322ff3899eb0acd3776a",
   "pins" : [
     {
       "identity" : "atomos",
@@ -8,6 +8,33 @@
       "state" : {
         "branch" : "master",
         "revision" : "5ffdb160c4913e02214020eb75ac620900cf2914"
+      }
+    },
+    {
+      "identity" : "dsl",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/leviouwendijk/DSL.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "b85a4fcf315dfa6c100b38adc7a9cdec15ad817f"
+      }
+    },
+    {
+      "identity" : "errors",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/leviouwendijk/Errors.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "3e20b181cec40d840b9346e0806dd0bfd369d447"
+      }
+    },
+    {
+      "identity" : "primitives",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/leviouwendijk/Primitives.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "4b81c1605140fe8b2bd01fd02fe9e8782edec564"
       }
     },
     {
